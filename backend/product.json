@@ -1,0 +1,53 @@
+[
+    {
+        "title": "Green Couch",
+        "suplier": "PlayFul Interiors",
+        "price": "$768",
+        "description": " This is a product description. This is a product description. This is a product description. This is djhdu djbuhdubsd dbscdddskdjic dbscygsdvhdc h h",
+        "imageUrl": "https://snugsofa.com/cdn/shop/articles/unnamed_3c895c0d-64f9-4bbf-8c5a-d793fcba5c97.jpg?v=1692718907",
+        "location": "Delhi"
+
+    },
+    {
+        "title": "Bunk Bed",
+        "suplier": "Maanik Interiors",
+        "price": "$468",
+        "description": " This is a product description. This is a product description. This is a product description. This is djhdu djbuhdubsd dbscdddskdjic dbscygsdvhdc h h",
+        "imageUrl": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/cd61ec0a-963f-41b0-9ed7-8e12ad75f634.__CR0,0,970,600_PT0_SX970_V1___.jpg",
+        "location": "Mumbai"
+
+    },
+    {
+        "title": "Double Bed",
+        "suplier": "kabub",
+        "price": "$572",
+        "description": " This is a product description. This is a product description. This is a product description. This is djhdu djbuhdubsd dbscdddskdjic dbscygsdvhdc h h",
+        "imageUrl": "https://rajadigitalplanets.com/cdn/shop/products/41IOQFHGxsL_800x.jpg?v=1603091250",
+        "location": "Delhi"
+
+    },
+    {
+        "title": "Chair",
+        "suplier": "Shriti Furnitures",
+        "price": "$502",
+        "description": " This is a product description. This is a product description. This is a product description. This is djhdu djbuhdubsd dbscdddskdjic dbscygsdvhdc h h",
+        "imageUrl": "https://m.media-amazon.com/images/I/61W75mAz15L._AC_UF894,1000_QL80_.jpg",
+        "location": "Chennai"
+
+    },
+    {
+        "title": "Soffa",
+        "suplier": "kabub",
+        "price": "$502",
+        "description": " This is a product description. This is a product description. This is a product description. This is djhdu djbuhdubsd dbscdddskdjic dbscygsdvhdc h h",
+        "imageUrl": "https://semobler.se/media/catalog/product/cache/702f9a1d9d4d46bf4232612831439819/a/n/annie-u-soffa-h-velu-97a.jpg",
+        "location": "Hyderabad"
+
+    }
+
+
+
+    
+
+
+]
