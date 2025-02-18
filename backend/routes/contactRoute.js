@@ -1,5 +1,8 @@
 const express = require('express')
 const contactrouter = express.Router()
+
+
+
 const {createContact,getAllContacts,deleteContact, editContact, getContact,searchContact, sortContact, addActivityToContact, deleteActivity} = require('../controllers/contactController.js')
 
 contactrouter.post('/create', createContact)
@@ -11,6 +14,5 @@ contactrouter.get('/search', searchContact)
 contactrouter.get('/sort', sortContact)
 contactrouter.post('/:id/activity', addActivityToContact)
 contactrouter.delete('/:id/activity/del/:activityId', deleteActivity)
-
 module.exports = contactrouter
 

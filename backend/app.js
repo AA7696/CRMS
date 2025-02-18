@@ -1,4 +1,7 @@
 const express = require('express')
+
+
+const mongoose =require('mongoose')
 const connectDb = require('./db/db.js')
 const authrouter = require('./routes/authRoute.js')
 const userRouter = require('./routes/userRoute.js')
@@ -43,3 +46,16 @@ const start = async() =>{
 
 start();
 
+// const { Sequelize } = require('sequelize');
+
+// const sequelize = new Sequelize('database_name', 'username', 'password', {
+//   host: 'localhost',  // Agar aap local system use kar rahe hain
+//   dialect: 'mysql',   // MySQL use kar rahe hain
+//   logging: false      // Console me SQL queries show na ho, agar chahiye to `true` karein
+// });
+
+// sequelize.authenticate()
+//   .then(() => console.log('✅ MySQL Database Connected'))
+//   .catch(err => console.log('❌ MySQL Connection Error:', err));
+
+// module.exports = sequelize;

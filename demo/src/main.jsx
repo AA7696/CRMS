@@ -16,6 +16,8 @@ import Users from './Pages/Users.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import SingleContact from './Pages/SingleContact.jsx';
 import EditContact from './Pages/EditContact.jsx';
+import EditLead from './Pages/EditLead.jsx';
+
 
 const router =  createBrowserRouter([
   {
@@ -60,6 +62,16 @@ const router =  createBrowserRouter([
         path: 'leads',
         element: <Leads />
       },
+
+      // {
+      //   path: 'leads/:id',
+      //   element:<SingleLead/>
+      // },
+      {
+        path: 'editlead/:id',
+        element:<EditLead/>
+      },
+      
       {
         path: 'users',
         element: <Users />

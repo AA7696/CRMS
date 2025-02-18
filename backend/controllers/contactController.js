@@ -119,6 +119,7 @@ const searchContact = async (req, res) => {
         // Search for contacts that match the query
         const contacts = await Contact.find({
             $or: [
+                {'basicInfo.uploadFile':regex},
                 {'basicInfo.firstName': regex},
                 {'basicInfo.middleName': regex},
                 {'basicInfo.lastName': regex},
