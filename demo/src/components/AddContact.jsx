@@ -197,7 +197,7 @@ function AddContact() {
                         {file && (
                           <p className="mt-2 text-sm text-gray-700">
                             {" "}
-                            <span className="font-semibold">{file.name}</span>
+                            <span className="font-semibold text-white">{file.name}</span>
                           </p>
                         )}
                       </div>
