@@ -9,14 +9,13 @@ function SingleContact() {
   const [contact, setContact] = useState({})
   const [activityType, setActivityType] = useState('')
   const [activityDesc, setActivityDesc] = useState('')
+  const [activityData, setActivityData] = useState([])
 
   useEffect(() => {
     const getContact = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/contacts/get/${id}`);
-        const contactData = response.data.contact;
-        console.log(contactData);
-        
+        const contactData = response.data.contact;        
         setContact(contactData)
 
       } catch (error) {
@@ -24,7 +23,18 @@ function SingleContact() {
 
       }
     }
+
+    const getActivities = async() =>{
+      try {
+        const response = await axios.get(`http://localhost:3000/api/contacts/${id}/activity`);
+        const activities = response.data.activities;
+        setActivityData(activities);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     getContact()
+    getActivities()
 
   }, [activityDesc])
 
@@ -87,9 +97,9 @@ function SingleContact() {
 
           <div className="flex-1 ml-4">
             <h3 className="text-lg font-bold text-white">
-              {contact.basicInfo && contact.basicInfo.firstName} {contact.basicInfo && contact.basicInfo.middleName} {contact.basicInfo && contact.basicInfo.lastName}
+              {contact && contact.firstName} {contact && contact.middleName} {contact && contact.lastName}
             </h3>
-            <p className="text-white"> Role: {contact.basicInfo && contact.basicInfo.role}</p>
+            <p className="text-white"> Role: {contact && contact.role}</p>
 
           </div>
 
@@ -102,19 +112,19 @@ function SingleContact() {
                 <div className="flex items-center space-x-2">
                   <span className="material-icons text-white">Email:</span>
                   <span className="text-white">
-                    {contact.basicInfo && contact.basicInfo.email}
+                    {contact && contact.email}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="material-icons text-white">Phone:</span>
                   <span className="text-white">
-                    {contact.basicInfo && contact.basicInfo.phone1}
+                    {contact && contact.phone1}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="material-icons text-white">Address:</span>
                   <span className="text-white">
-                    {contact.addressInfo && contact.addressInfo.streetAddress}
+                    {contact && contact.streetAddress}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -131,15 +141,15 @@ function SingleContact() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-white">Company:</span>
-                  <span className="text-white">{contact.basicInfo && contact.basicInfo.companyName}</span>
+                  <span className="text-white">{contact && contact.companyName}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white">Company Website:</span>
-                  <span className="text-white">{contact.basicInfo && contact.basicInfo.companyWebsite}</span>
+                  <span className="text-white">{contact && contact.companyWebsite}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white">Industry:</span>
-                  <span className="text-white">{contact.basicInfo && contact.basicInfo.industry}</span>
+                  <span className="text-white">{contact && contact.industry}</span>
                 </div>
 
               </div>
@@ -160,7 +170,7 @@ function SingleContact() {
               value={activityType}
               onChange={(e) => setActivityType(e.target.value)}
               >
-                <option selected>Type</option>
+                <option>Type</option>
                 <option>Email</option>
                 <option>Message</option>
                 <option>Status</option>
@@ -171,7 +181,7 @@ function SingleContact() {
             </div>
 
             {/* Activities */}
-            {contact.activities && contact.activities.map((activity,index) =>{
+            {activityData && activityData.map((activity,index) =>{
               return(
                 <div key={index} className="flex flex-col bg-[#6b71ebf9] w-full rounded-lg p-4 ">
                   <div className=' flex w-full justify-between items-center'>
@@ -179,7 +189,7 @@ function SingleContact() {
                   <div className=' flex gap-4 items-center'>
                   <p>{new Date(activity.date).toLocaleString().slice(0, 9)}</p>
                   <button className=' bg-transparent'
-                  onClick={() => deleteActivity(id,activity._id)}
+                  onClick={() => deleteActivity(id,activity.id)}
                   >
                   <MdDelete className=' text-2xl' />
                   </button>

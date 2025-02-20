@@ -30,7 +30,6 @@ function ContactList({contacts, setContacts}) {
             const response = await axios.delete(`http://localhost:3000/api/contacts/delete/${id}`);
             console.log(response.data);
             alert("Contact deleted successfully")
-            // setContacts(contacts.filter((contact) => contact._id !== id));
             window.location.reload()
         } catch (error) {
             console.log(error);
@@ -65,17 +64,17 @@ function ContactList({contacts, setContacts}) {
                                 {/* row 1 */}
                                 {contacts.map((contact) =>{
                                     return(
-                                        <tr key={contact._id}>
+                                        <tr key={contact.id}>
                                         <th>
                                         <div className="dropdown ">
                             <div tabIndex={0} role="button" className="btn">
                             <BsThreeDotsVertical className=' text-lg' />
                             </div>
                             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li className=' w-full px-4'><button className=' bg-transparent  w-full hover:border-none' onClick={() => {handelDelete(contact._id)}}>Delete</button></li>
-                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/editContact/${contact._id}`}>Edit</Link>
+                                <li className=' w-full px-4'><button className=' bg-transparent  w-full hover:border-none' onClick={() => {handelDelete(contact.id)}}>Delete</button></li>
+                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/editContact/${contact.id}`}>Edit</Link>
                                 </li>
-                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/contacts/${contact._id}`}>View</Link></li>
+                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/contacts/${contact.id}`}>View</Link></li>
                             </ul>
                         </div>
 
@@ -91,28 +90,28 @@ function ContactList({contacts, setContacts}) {
                                                 </div>
                                                 <div>
                                                     <div className="font-bold">
-                                                        {contact.basicInfo.firstName} {contact.basicInfo.middleName} {contact.basicInfo.lastName}
+                                                        {contact.firstName} {contact.middleName} {contact.lastName}
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            {contact.basicInfo.email}
+                                            {contact.email}
                                         </td>
                                         <td>
-                                            {contact.basicInfo.companyName}
+                                            {contact.companyName}
                                         </td>
                                         <td>
-                                            {contact.basicInfo.role}
+                                            {contact.role}
                                         </td>
                                         <td>
-                                            {contact.basicInfo.phone1}
+                                            {contact.phone1}
                                         </td>
                                         <td>
-                                            {contact.basicInfo.industry}
+                                            {contact.industry}
                                         </td>
                                         <td>
-                                            {contact.basicInfo.location}
+                                            {contact.location}
 
                                         </td>
                                         <td>

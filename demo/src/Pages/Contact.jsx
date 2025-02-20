@@ -14,8 +14,6 @@ function Contact() {
         try {
             const searchQuery = search;
             const response = await axios.get(`http://localhost:3000/api/contacts/search?query=${searchQuery}`);
-            // setSearchContact(response.contacts);
-            // console.log(response.contacts);
             
             setContacts(response.data.contacts);
           } catch (error) {
@@ -27,7 +25,6 @@ function Contact() {
         try {
             const sortQuery = sortOption;
             const response = await axios.get(`http://localhost:3000/api/contacts/sort?sortBy=${sortQuery}`)
-            // console.log(response.data);
             
             setContacts(response.data.contacts);
             
@@ -57,7 +54,7 @@ function Contact() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 16 16"
-                                fill="currentColor"de
+                                fill="currentColor"
                                 className="h-4 w-4 opacity-70">
                                 <path
                                     fillRule="evenodd"
@@ -75,14 +72,6 @@ function Contact() {
                             </ul>
                         </div>
 
-                        {/* <div className="dropdown ">
-                            <div tabIndex={0} role="button" className="btn btn-primary  m-1">Filters</div>
-                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li><a>Item 1</a></li>
-                                <li><a>Item 2</a></li>
-                            </ul>
-                        </div>
- */}
 
                         <AddContact />
                     </div>

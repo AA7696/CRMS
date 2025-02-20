@@ -240,9 +240,9 @@ const sortContact = async (req, res) => {
         order = [['firstName', 'ASC']]; // Sort by firstName in ascending order
     } else if (sortBy === 'date') {
         order = [['createdAt', 'DESC']]; // Sort by createdAt in descending order
-    } else {
-        return res.status(400).json({ message: 'Invalid sortBy parameter' });
-    }
+     } //else {
+    //     return res.status(400).json({ message: 'Invalid sortBy parameter' });
+    // }
 
     try {
         const contacts = await Contact.findAll({
@@ -341,6 +341,8 @@ const getContactActivities = async (req, res) => {
         res.status(500).json({ message: 'Error fetching activities', error: error.message });
     }
 };
+
+
 
 
 module.exports = {createContact, getAllContacts, deleteContact, editContact, getContact,searchContact, sortContact, addActivityToContact, deleteActivity, getContactActivities}; // Export the functions
