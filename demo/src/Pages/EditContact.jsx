@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 function EditContact() {
   const { id } = useParams();
+  
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    basicInfo: {
       firstName: "",
       middleName: "",
       lastName: "",
@@ -21,21 +21,16 @@ function EditContact() {
       location: "",
       role: "",
       industry: "",
-    },
-    addressInfo: {
       streetAddress: "",
       country: "",
       stateProvince: "",
       city: "",
       zipcode: "",
-    },
-    socialMediaLinks: {
       facebook: "",
       instagram: "",
       twitter: "",
       whatsApp: "",
       linkedin: "",
-    },
   });
 
 
@@ -74,33 +69,28 @@ function EditContact() {
         const contactData = response.data.contact;
 
         setFormData({
-          basicInfo: {
-            firstName: contactData.basicInfo.firstName,
-            middleName: contactData.basicInfo.middleName,
-            lastName: contactData.basicInfo.lastName,
-            email: contactData.basicInfo.email,
-            companyName: contactData.basicInfo.companyName,
-            companyWebsite: contactData.basicInfo.companyWebsite,
-            phone1: contactData.basicInfo.phone1,
-            phone2: contactData.basicInfo.phone2,
-            location: contactData.basicInfo.location,
-            role: contactData.basicInfo.role,
-            industry: contactData.basicInfo.industry,
-          },
-          addressInfo: {
-            streetAddress: contactData.addressInfo.streetAddress,
-            country: contactData.addressInfo.country,
-            stateProvince: contactData.addressInfo.stateProvince,
-            city: contactData.addressInfo.city,
-            zipcode: contactData.addressInfo.zipcode,
-          },
-          socialMediaLinks: {
-            facebook: contactData.socialMediaLinks.facebook,
-            instagram: contactData.socialMediaLinks.instagram,
-            twitter: contactData.socialMediaLinks.twitter,
-            whatsApp: contactData.socialMediaLinks.whatsApp,
-            linkedin: contactData.socialMediaLinks.linkedin,
-          },
+          firstName: contactData.firstName,
+          middleName: contactData.middleName,
+          lastName: contactData.lastName,
+          email: contactData.email,
+          companyName: contactData.companyName || "",
+          companyWebsite: contactData.companyWebsite,
+          phone1: contactData.phone1,
+          phone2: contactData.phone2,
+          location: contactData.location,
+          role: contactData.role,
+          industry: contactData.industry,
+          streetAddress: contactData.streetAddress,
+          country: contactData.country || "",
+          stateProvince: contactData.stateProvince || "",
+          city: contactData.city || "",
+          zipcode: contactData.zipcode,
+          facebook: contactData.facebook,
+          instagram: contactData.instagram,
+          twitter: contactData.twitter,
+          whatsApp: contactData.whatsApp,
+          linkedin: contactData.linkedin,
+
         });
       } catch (error) {
         console.error(error);
@@ -109,14 +99,12 @@ function EditContact() {
     getContactData();
   }, [id]);
 
-  const handleChange = (e, section, field) => {
+  const handleChange = (e, field) => {
     const { value } = e.target;
     setFormData({
       ...formData,
-      [section]: {
-        ...formData[section],
-        [field]: value,
-      },
+      [field]: value
+     
     });
   };
   // image set
@@ -124,8 +112,7 @@ function EditContact() {
 
   const handleSave = async (c_id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:3000/api/contacts/edit/${c_id}`,
+      const response = await axios.put(`http://localhost:3000/api/contacts/edit/${c_id}`,
         formData
       );
       alert("Contact updated successfully!");
@@ -213,9 +200,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.firstName}
+                        value={formData.firstName || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "firstName")
+                          handleChange(e, "firstName")
                         }
                       />
                     </div>
@@ -226,9 +213,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.middleName}
+                        value={formData.middleName || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "middleName")
+                          handleChange(e,  "middleName")
                         }
                       />
                     </div>
@@ -240,9 +227,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.lastName}
+                        value={formData.lastName || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "lastName")
+                          handleChange(e, "lastName")
                         }
                       />
                     </div>
@@ -251,8 +238,8 @@ function EditContact() {
                       <input
                         type="email"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.email}
-                        onChange={(e) => handleChange(e, "basicInfo", "email")}
+                        value={formData.email || ""}
+                        onChange={(e) => handleChange(e,  "email")}
                       />
                     </div>
                     <div>
@@ -261,9 +248,9 @@ function EditContact() {
                       </label>
                       <select
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.companyName}
+                        value={formData.companyName || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "companyName")
+                          handleChange(e, "companyName")
                         }
                       >
                         <option className="bg-gray-800" value="">
@@ -284,9 +271,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.companyWebsite}
+                        value={formData.companyWebsite || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "companyWebsite")
+                          handleChange(e, "companyWebsite")
                         }
                       />
                     </div>
@@ -296,8 +283,8 @@ function EditContact() {
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         required
-                        value={formData.basicInfo.phone1}
-                        onChange={(e) => handleChange(e, "basicInfo", "phone1")}
+                        value={formData.phone1 || ""}
+                        onChange={(e) => handleChange(e,  "phone1")}
                       />
                     </div>
                     <div>
@@ -305,8 +292,8 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.phone2}
-                        onChange={(e) => handleChange(e, "basicInfo", "phone2")}
+                        value={formData.phone2 || ""}
+                        onChange={(e) => handleChange(e, "phone2")}
                       />
                     </div>
                     <div>
@@ -314,9 +301,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.location}
+                        value={formData.location || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "location")
+                          handleChange(e, "location")
                         }
                       />
                     </div>
@@ -325,8 +312,8 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.role}
-                        onChange={(e) => handleChange(e, "basicInfo", "role")}
+                        value={formData.role || ""}
+                        onChange={(e) => handleChange(e, "role")}
                       />
                     </div>
                     <div>
@@ -336,9 +323,9 @@ function EditContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.basicInfo.industry}
+                        value={formData.industry || ""}
                         onChange={(e) =>
-                          handleChange(e, "basicInfo", "industry")
+                          handleChange(e, "industry")
                         }
                       />
                     </div>
@@ -360,9 +347,9 @@ function EditContact() {
                 <input
                   type="text"
                   className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                  value={formData.addressInfo.streetAddress}
+                  value={formData.streetAddress || ""}
                   onChange={(e) =>
-                    handleChange(e, "addressInfo", "streetAddress")
+                    handleChange(e,  "streetAddress")
                   }
                 />
               </div>
@@ -373,8 +360,8 @@ function EditContact() {
                   <label className="text-gray-400 text-sm">Country</label>
                   <select
                     className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.addressInfo.country}
-                    onChange={(e) => handleChange(e, "addressInfo", "country")}
+                    value={formData.country || ""}
+                    onChange={(e) => handleChange(e, "country")}
                   >
                     <option className="bg-gray-800" value="">
                       Choose
@@ -393,9 +380,9 @@ function EditContact() {
                   </label>
                   <select
                     className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.addressInfo.stateProvince}
+                    value={formData.stateProvince || ""}
                     onChange={(e) =>
-                      handleChange(e, "addressInfo", "stateProvince")
+                      handleChange(e, "stateProvince")
                     }
                   >
                     <option className="bg-gray-800" value="">
@@ -417,8 +404,8 @@ function EditContact() {
                   <label className="text-gray-400 text-sm">City</label>
                   <select
                     className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.addressInfo.city}
-                    onChange={(e) => handleChange(e, "addressInfo", "city")}
+                    value={formData.city || ""}
+                    onChange={(e) => handleChange(e, "city")}
                   >
                     <option className="bg-gray-800" value="">
                       Choose
@@ -436,8 +423,8 @@ function EditContact() {
                   <input
                     type="text"
                     className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.addressInfo.zipcode}
-                    onChange={(e) => handleChange(e, "addressInfo", "zipcode")}
+                    value={formData.zipcode || ""}
+                    onChange={(e) => handleChange(e, "zipcode")}
                   />
                 </div>
               </div>
@@ -455,36 +442,36 @@ function EditContact() {
               <form>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-gray-400 text-sm">Facebook *</label>
+                    <label className="text-gray-400 text-sm">Facebook </label>
                     <input
                       type="text"
                       className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.socialMediaLinks.facebook}
+                      value={formData.facebook || ""}
                       onChange={(e) =>
-                        handleChange(e, "socialMediaLinks", "facebook")
+                        handleChange(e, "facebook")
                       }
                     />
                   </div>
                   <div>
-                    <label className="text-gray-400 text-sm">Instagram *</label>
+                    <label className="text-gray-400 text-sm">Instagram </label>
                     <input
                       type="text"
                       className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.socialMediaLinks.instagram}
+                      value={formData.instagram || ""}
                       onChange={(e) =>
-                        handleChange(e, "socialMediaLinks", "instagram")
+                        handleChange(e, "instagram")
                       }
                     />
                   </div>
 
                   <div>
-                    <label className="text-gray-400 text-sm">Twitter *</label>
+                    <label className="text-gray-400 text-sm">Twitter </label>
                     <input
                       type="text"
                       className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.socialMediaLinks.twitter}
+                      value={formData.twitter || ""}
                       onChange={(e) =>
-                        handleChange(e, "socialMediaLinks", "twitter")
+                        handleChange(e, "twitter")
                       }
                     />
                   </div>
@@ -493,9 +480,9 @@ function EditContact() {
                     <input
                       type="text"
                       className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.socialMediaLinks.whatsApp}
+                      value={formData.whatsApp || ""}
                       onChange={(e) =>
-                        handleChange(e, "socialMediaLinks", "whatsApp")
+                        handleChange(e, "whatsApp")
                       }
                     />
                   </div>
@@ -504,9 +491,9 @@ function EditContact() {
                     <input
                       type="text"
                       className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.socialMediaLinks.linkedin}
+                      value={formData.linkedin || ""}
                       onChange={(e) =>
-                        handleChange(e, "socialMediaLinks", "linkedin")
+                        handleChange(e, "linkedin")
                       }
                     />
                   </div>

@@ -4,7 +4,6 @@ import axios from "axios";
 
 function AddContact() {
   const [formData, setFormData] = useState({
-    basicInfo: {
       firstName: "",
       middleName: "",
       lastName: "",
@@ -16,21 +15,17 @@ function AddContact() {
       location: "",
       role: "",
       industry: "",
-    },
-    addressInfo: {
       streetAddress: "",
       country: "",
       stateProvince: "",
       city: "",
       zipcode: "",
-    },
-    socialMediaLinks: {
       facebook: "",
       instagram: "",
       twitter: "",
       whatsApp: "",
       linkedin: "",
-    },
+    
   });
 
   const [file, setFile] = useState(null);
@@ -58,14 +53,12 @@ function AddContact() {
   };
 
      
-  const handleChange = (e, section, field) => {
+  const handleChange = (e, field) => {
     const { value } = e.target;
     setFormData({
       ...formData,
-      [section]: {
-        ...formData[section],
-        [field]: value,
-      },
+      [field]: value
+      
     });
   };
 
@@ -76,16 +69,34 @@ function AddContact() {
       const response = await axios.post(
         "http://localhost:3000/api/contacts/create",
         {
-          basicInfo: formData.basicInfo,
-          addressInfo: formData.addressInfo,
-          socialMediaLinks: formData.socialMediaLinks,
+          firstName: formData.firstName,
+          middleName: formData.middleName,
+          lastName: formData.lastName,
+          email: formData.email,
+          companyName: formData.companyName,
+          companyWebsite: formData.companyWebsite,
+          phone1: formData.phone1,
+          phone2: formData.phone2,
+          location: formData.location,
+          role: formData.role,
+          industry: formData.industry,
+          streetAddress: formData.streetAddress,
+          country: formData.country,
+          stateProvince: formData.stateProvince,
+          city: formData.city,
+          zipcode: formData.zipcode,
+          facebook: formData.facebook,
+          instagram: formData.instagram,
+          twitter: formData.twitter,
+          whatsApp: formData.whatsApp,
+          linkedin: formData.linkedin,
+
         }
       );
       if (response.status === 201) {
         alert("Contact created successfully");
         // Clear form data
         setFormData({
-          basicInfo: {
             firstName: "",
             middleName: "",
             lastName: "",
@@ -97,21 +108,16 @@ function AddContact() {
             location: "",
             role: "",
             industry: "",
-          },
-          addressInfo: {
             streetAddress: "",
             country: "",
             stateProvince: "",
             city: "",
             zipcode: "",
-          },
-          socialMediaLinks: {
             facebook: "",
             instagram: "",
             twitter: "",
             whatsApp: "",
             linkedin: "",
-          },
         });
         window.location.reload();
       }
@@ -216,9 +222,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.firstName}
+                              value={formData.firstName}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "firstName")
+                                handleChange(e, "firstName")
                               }
                             />
                           </div>
@@ -229,9 +235,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.middleName}
+                              value={formData.middleName}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "middleName")
+                                handleChange(e, "middleName")
                               }
                             />
                           </div>
@@ -243,9 +249,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.lastName}
+                              value={formData.lastName}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "lastName")
+                                handleChange(e, "lastName")
                               }
                             />
                           </div>
@@ -256,9 +262,9 @@ function AddContact() {
                             <input
                               type="email"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.email}
+                              value={formData.email}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "email")
+                                handleChange(e, "email")
                               }
                             />
                           </div>
@@ -268,9 +274,9 @@ function AddContact() {
                             </label>
                             <select
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.companyName}
+                              value={formData.companyName}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "companyName")
+                                handleChange(e, "companyName")
                               }
                             >
                               <option className="bg-gray-800" value="">
@@ -291,9 +297,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.companyWebsite}
+                              value={formData.companyWebsite}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "companyWebsite")
+                                handleChange(e, "companyWebsite")
                               }
                             />
                           </div>
@@ -305,9 +311,9 @@ function AddContact() {
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                               required
-                              value={formData.basicInfo.phone1}
+                              value={formData.phone1}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "phone1")
+                                handleChange(e, "phone1")
                               }
                             />
                           </div>
@@ -318,9 +324,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.phone2}
+                              value={formData.phone2}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "phone2")
+                                handleChange(e, "phone2")
                               }
                             />
                           </div>
@@ -331,9 +337,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.location}
+                              value={formData.location}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "location")
+                                handleChange(e, "location")
                               }
                             />
                           </div>
@@ -344,9 +350,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.role}
+                              value={formData.role}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "role")
+                                handleChange(e, "role")
                               }
                             />
                           </div>
@@ -357,9 +363,9 @@ function AddContact() {
                             <input
                               type="text"
                               className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.basicInfo.industry}
+                              value={formData.industry}
                               onChange={(e) =>
-                                handleChange(e, "basicInfo", "industry")
+                                handleChange(e, "industry")
                               }
                             />
                           </div>
@@ -385,9 +391,9 @@ function AddContact() {
                       <input
                         type="text"
                         className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                        value={formData.addressInfo.streetAddress}
+                        value={formData.streetAddress}
                         onChange={(e) =>
-                          handleChange(e, "addressInfo", "streetAddress")
+                          handleChange(e, "streetAddress")
                         }
                       />
                     </div>
@@ -398,9 +404,9 @@ function AddContact() {
                         <label className="text-gray-400 text-sm">Country</label>
                         <select
                           className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                          value={formData.addressInfo.country}
+                          value={formData.country}
                           onChange={(e) =>
-                            handleChange(e, "addressInfo", "country")
+                            handleChange(e, "country")
                           }
                         >
                           <option className="bg-gray-800" value="">
@@ -420,9 +426,9 @@ function AddContact() {
                         </label>
                         <select
                           className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                          value={formData.addressInfo.stateProvince}
+                          value={formData.stateProvince}
                           onChange={(e) =>
-                            handleChange(e, "addressInfo", "stateProvince")
+                            handleChange(e, "stateProvince")
                           }
                         >
                           <option className="bg-gray-800" value="">
@@ -444,9 +450,9 @@ function AddContact() {
                         <label className="text-gray-400 text-sm">City</label>
                         <select
                           className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                          value={formData.addressInfo.city}
+                          value={formData.city}
                           onChange={(e) =>
-                            handleChange(e, "addressInfo", "city")
+                            handleChange(e, "city")
                           }
                         >
                           <option className="bg-gray-800" value="">
@@ -465,9 +471,9 @@ function AddContact() {
                         <input
                           type="text"
                           className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                          value={formData.addressInfo.zipcode}
+                          value={formData.zipcode}
                           onChange={(e) =>
-                            handleChange(e, "addressInfo", "zipcode")
+                            handleChange(e, "zipcode")
                           }
                         />
                       </div>
@@ -487,41 +493,41 @@ function AddContact() {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="text-gray-400 text-sm">
-                            Facebook *
+                            Facebook 
                           </label>
                           <input
                             type="text"
                             className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            value={formData.socialMediaLinks.facebook}
+                            value={formData.facebook}
                             onChange={(e) =>
-                              handleChange(e, "socialMediaLinks", "facebook")
+                              handleChange(e,  "facebook")
                             }
                           />
                         </div>
                         <div>
                           <label className="text-gray-400 text-sm">
-                            Instagram *
+                            Instagram 
                           </label>
                           <input
                             type="text"
                             className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            value={formData.socialMediaLinks.instagram}
+                            value={formData.instagram}
                             onChange={(e) =>
-                              handleChange(e, "socialMediaLinks", "instagram")
+                              handleChange(e, "instagram")
                             }
                           />
                         </div>
 
                         <div>
                           <label className="text-gray-400 text-sm">
-                            Twitter *
+                            Twitter 
                           </label>
                           <input
                             type="text"
                             className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            value={formData.socialMediaLinks.twitter}
+                            value={formData.twitter}
                             onChange={(e) =>
-                              handleChange(e, "socialMediaLinks", "twitter")
+                              handleChange(e,  "twitter")
                             }
                           />
                         </div>
@@ -532,9 +538,9 @@ function AddContact() {
                           <input
                             type="text"
                             className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            value={formData.socialMediaLinks.whatsApp}
+                            value={formData.whatsApp}
                             onChange={(e) =>
-                              handleChange(e, "socialMediaLinks", "whatsApp")
+                              handleChange(e, "whatsApp")
                             }
                           />
                         </div>
@@ -545,9 +551,9 @@ function AddContact() {
                           <input
                             type="text"
                             className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            value={formData.socialMediaLinks.linkedin}
+                            value={formData.linkedin}
                             onChange={(e) =>
-                              handleChange(e, "socialMediaLinks", "linkedin")
+                              handleChange(e, "linkedin")
                             }
                           />
                         </div>
