@@ -56,7 +56,7 @@ useEffect(() => {
   </div>
   <div className="drawer-side w-[20%] h-full   ">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-base-100 text-base-content h-full w-50 p-4">
+    <ul className="menu bg-gray-400 text-base-content h-full w-50 p-4">
     <div className='text-[#646cff]'>
       <Link className=" font-bold text-3xl btn btn-ghost btn:hover-none ">
       CRMS

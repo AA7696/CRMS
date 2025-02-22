@@ -6,9 +6,9 @@ import LeadList from '../components/LeadList'
 function Leads() {
   return (
     <>
-                <div className="bg-base-200 h-full w-full p-6 mt-16   ">
+                <div className="bg-base-200 h-full w-full p-6 mt-5   ">
                 <h1 className=' text-3xl mt-8'>Leads</h1>
-                <div className="grid grid-cols-1 mt-4 divide-y divide-slate-700 w-[95%] ">
+                <div className="grid grid-cols-1 mt-4 divide-y divide-slate-700 w-full ">
                     
                 {/* Top Pannel */}
                     <div className="bg-base-100 p-4  shadow-md flex flex-row justify-between w-full ">
