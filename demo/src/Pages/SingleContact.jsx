@@ -107,7 +107,7 @@ function SingleContact() {
         <div className="flex flex-col gap-4  mt-4 md:flex-row w-full">
           <div className="p-4 bg-[#1f2937] rounded-lg shadow-md w-[25%] h-[415px] overflow-y-auto ">
             <div >
-              <h2 className="text-lg font-semibold text-grey mb-4">Basic Information</h2>
+              <h2 className="text-lg font-semibold text-white mb-4">Basic Information</h2>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <span className="material-icons text-white">Email:</span>
