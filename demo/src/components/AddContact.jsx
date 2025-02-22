@@ -148,7 +148,7 @@ function AddContact() {
               {/* Basic Info */}
               <div className="collapse collapse-arrow join-item border-base-300 border">
                 <input type="radio" name="my-accordion-4" />
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-white text-xl font-medium">
                   Basic Info
                 </div>
                 <div className="collapse-content">
@@ -378,7 +378,7 @@ function AddContact() {
               {/* Address Info */}
               <div className="collapse collapse-arrow join-item border-base-300 border">
                 <input type="radio" name="my-accordion-4" />
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-white text-xl font-medium">
                   Address Info
                 </div>
                 <div className="collapse-content">
@@ -484,7 +484,7 @@ function AddContact() {
               {/* Social Media Link */}
               <div className="collapse collapse-arrow join-item border-base-300 border">
                 <input type="radio" name="my-accordion-4" />
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-white text-xl font-medium">
                   Social Media Link
                 </div>
                 <div className="collapse-content">

@@ -63,7 +63,7 @@ function HomeNavbar({isSidebarOpen, setIsSidebarOpen}) {
 
   return (
     <>
-        <div className={`navbar   bg-base-100 ${isSidebarOpen? 'w-[89%]': 'w-full'}  h-[10%] fixed top-0 p-5 z-50`}>
+        <div className={`navbar   bg-gray-400 ${isSidebarOpen? 'w-[89%]': 'w-full'}  h-[10%] fixed top-0 p-5 z-50`}>
   <div className={`flex-1 ${isSidebarOpen? 'ml-14': 'ml-3'} flex-row gap-6`}>
   <button onClick={toggleSidebar} className="btn btn-ghost">
             <FiAlignJustify /> {/* Icon for the toggle button */}
