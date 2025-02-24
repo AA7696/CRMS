@@ -72,9 +72,9 @@ function ContactList({contacts, setContacts}) {
                             </div>
                             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                                 <li className=' w-full px-4'><button className=' bg-transparent  w-full hover:border-none' onClick={() => {handelDelete(contact.id)}}>Delete</button></li>
-                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/editContact/${contact.id}`}>Edit</Link>
+                                <li className=' w-full px-4'><Link className='  text-black w-full hover:border-none ' to={`/homelayout/editContact/${contact.id}`}>Edit</Link>
                                 </li>
-                                <li className=' w-full px-4'><Link className=' text-white w-full hover:text-white  ' to={`/homelayout/contacts/${contact.id}`}>View</Link></li>
+                                <li className=' w-full px-4'><Link className=' text-black w-full hover:border-none' to={`/homelayout/contacts/${contact.id}`}>View</Link></li>
                             </ul>
                         </div>
 

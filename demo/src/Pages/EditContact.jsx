@@ -8,7 +8,7 @@ function EditContact() {
   const { id } = useParams();
   
   const navigate = useNavigate();
-
+  const[isOpen, setIsOpen]=useState(false);
   const [formData, setFormData] = useState({
       firstName: "",
       middleName: "",
@@ -126,20 +126,26 @@ function EditContact() {
 
   return (
     <>
-      <div></div>
-      <div className="join join-vertical w-screen md:w-[700px] p-6 ">
+      <div>
+        
+      </div>
+      <div className=" bg-purple-200 join join-vertical w-screen md:w-[700px] p-6 ">
+         
+             
+    
+
         {/* Basic Info */}
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-xl font-medium">Basic Info</div>
-          <div className="collapse-content">
-            <div className="min-h-screen flex justify-center items-center">
+          <div className="collapse-title mt-[30px] text-xl text-black font-medium">Basic Info</div>
+          <div className="collapse-content ">
+            <div className=" flex justify-center items-center ">
               <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
                 {/* Upload Section */}
 
                 <div className="flex  items-center mb-6">
                   {/* SVG icon area with preview */}
-                  <div className="w-24 h-24 rounded-lg flex justify-center items-center border border-dashed border-gray-500 hover:bg-red-500 mt-4">
+                  <div className="w-24 h-24 rounded-lg flex justify-center bg-purple-100 items-center border border-dashed border-gray-900 hover:bg-purple-400 mt-4">
                     {preview ? (
                       <img
                         src={preview}
@@ -175,7 +181,7 @@ function EditContact() {
                   {/* Button triggers file selection or upload */}
                   <button
                     onClick={handleButtonClick}
-                    className=" ml-4 btn-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                    className=" ml-4 btn-primary bg-lime-700 border-lime-700 text-white px-4 py-2 rounded-lg hover:bg-lime-600 hover:border-lime-600"
                   >
                     {!file ? "Select File" : "Upload File"}{" "}
                     {/* Change button text based on file selection */}
@@ -189,17 +195,17 @@ function EditContact() {
                     </p>
                   )}
                 </div>
-                <p className="text-gray-400 text-sm mb-6">JPG, GIF, or PNG. Max size of 800K</p> 
+                <p className="text-gray-500 text-sm mb-6">JPG, GIF, or PNG. Max size of 800K</p> 
                 {/* Form Fields */}
                 <form>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         First Name *
                       </label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.firstName || ""}
                         onChange={(e) =>
                           handleChange(e, "firstName")
@@ -207,12 +213,12 @@ function EditContact() {
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         Middle Name *
                       </label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.middleName || ""}
                         onChange={(e) =>
                           handleChange(e,  "middleName")
@@ -221,12 +227,12 @@ function EditContact() {
                     </div>
 
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         Last Name *
                       </label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.lastName || ""}
                         onChange={(e) =>
                           handleChange(e, "lastName")
@@ -234,43 +240,43 @@ function EditContact() {
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">Email *</label>
+                      <label className="text-gray-600 text-sm">Email *</label>
                       <input
                         type="email"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.email || ""}
                         onChange={(e) => handleChange(e,  "email")}
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         Company Name
                       </label>
                       <select
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.companyName || ""}
                         onChange={(e) =>
                           handleChange(e, "companyName")
                         }
                       >
-                        <option className="bg-gray-800" value="">
+                        <option className="bg-gray-100" value="">
                           Choose
                         </option>
-                        <option className="bg-gray-800" value="company1">
+                        <option className="bg-gray-100" value="company1">
                           Company 1
                         </option>
-                        <option className="bg-gray-800" value="company2">
+                        <option className="bg-gray-100" value="company2">
                           Company 2
                         </option>
                       </select>
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         Company Website
                       </label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.companyWebsite || ""}
                         onChange={(e) =>
                           handleChange(e, "companyWebsite")
@@ -278,29 +284,29 @@ function EditContact() {
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">Phone 1 *</label>
+                      <label className="text-gray-600 text-sm">Phone 1 *</label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         required
                         value={formData.phone1 || ""}
                         onChange={(e) => handleChange(e,  "phone1")}
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">Phone 2</label>
+                      <label className="text-gray-600 text-sm">Phone 2</label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.phone2 || ""}
                         onChange={(e) => handleChange(e, "phone2")}
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">Location</label>
+                      <label className="text-gray-600 text-sm">Location</label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.location || ""}
                         onChange={(e) =>
                           handleChange(e, "location")
@@ -308,21 +314,21 @@ function EditContact() {
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">Role</label>
+                      <label className="text-gray-600 text-sm">Role</label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.role || ""}
                         onChange={(e) => handleChange(e, "role")}
                       />
                     </div>
                     <div>
-                      <label className="text-gray-400 text-sm">
+                      <label className="text-gray-600 text-sm">
                         Industry Domain
                       </label>
                       <input
                         type="text"
-                        className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.industry || ""}
                         onChange={(e) =>
                           handleChange(e, "industry")
@@ -338,15 +344,15 @@ function EditContact() {
         {/* Address Info */}
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-xl font-medium">Address Info</div>
+          <div className="collapse-title text-xl  text-black font-medium">Address Info</div>
           <div className="collapse-content">
             <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
               {/* Street Address */}
               <div className="mb-4">
-                <label className="text-gray-400 text-sm">Street Address</label>
+                <label className="text-gray-600 text-sm">Street Address</label>
                 <input
                   type="text"
-                  className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                  className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                   value={formData.streetAddress || ""}
                   onChange={(e) =>
                     handleChange(e,  "streetAddress")
@@ -357,41 +363,41 @@ function EditContact() {
               {/* Country and State/Province */}
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="text-gray-400 text-sm">Country</label>
+                  <label className="text-gray-600 text-sm">Country</label>
                   <select
-                    className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.country || ""}
                     onChange={(e) => handleChange(e, "country")}
                   >
-                    <option className="bg-gray-800" value="">
+                    <option className="bg-gray-100" value="">
                       Choose
                     </option>
-                    <option className="bg-gray-800" value="USA">
+                    <option className="bg-gray-100" value="USA">
                       USA
                     </option>
-                    <option className="bg-gray-800" value="Canada">
+                    <option className="bg-gray-100" value="Canada">
                       Canada
                     </option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm">
+                  <label className="text-gray-600 text-sm">
                     State / Province
                   </label>
                   <select
-                    className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.stateProvince || ""}
                     onChange={(e) =>
                       handleChange(e, "stateProvince")
                     }
                   >
-                    <option className="bg-gray-800" value="">
+                    <option className="bg-gray-100" value="">
                       Choose
                     </option>
-                    <option className="bg-gray-800" value="California">
+                    <option className="bg-gray-100" value="California">
                       California
                     </option>
-                    <option className="bg-gray-800" value="Ontario">
+                    <option className="bg-gray-100" value="Ontario">
                       Ontario
                     </option>
                   </select>
@@ -401,28 +407,28 @@ function EditContact() {
               {/* City and Zipcode */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-gray-400 text-sm">City</label>
+                  <label className="text-gray-600 text-sm">City</label>
                   <select
-                    className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.city || ""}
                     onChange={(e) => handleChange(e, "city")}
                   >
-                    <option className="bg-gray-800" value="">
+                    <option className="bg-gray-100" value="">
                       Choose
                     </option>
-                    <option className="bg-gray-800" value="Los Angeles">
+                    <option className="bg-gray-100" value="Los Angeles">
                       Los Angeles
                     </option>
-                    <option className="bg-gray-800" value="Toronto">
+                    <option className="bg-gray-100" value="Toronto">
                       Toronto
                     </option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm">Zipcode</label>
+                  <label className="text-gray-600 text-sm">Zipcode</label>
                   <input
                     type="text"
-                    className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.zipcode || ""}
                     onChange={(e) => handleChange(e, "zipcode")}
                   />
@@ -434,7 +440,7 @@ function EditContact() {
         {/* Social Media Link */}
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-xl font-medium">
+          <div className="collapse-title text-xl text-black font-medium">
             Social Media Link
           </div>
           <div className="collapse-content">
@@ -442,10 +448,10 @@ function EditContact() {
               <form>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-gray-400 text-sm">Facebook </label>
+                    <label className="text-gray-600 text-sm">Facebook </label>
                     <input
                       type="text"
-                      className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.facebook || ""}
                       onChange={(e) =>
                         handleChange(e, "facebook")
@@ -453,10 +459,10 @@ function EditContact() {
                     />
                   </div>
                   <div>
-                    <label className="text-gray-400 text-sm">Instagram </label>
+                    <label className="text-gray-600 text-sm">Instagram </label>
                     <input
                       type="text"
-                      className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.instagram || ""}
                       onChange={(e) =>
                         handleChange(e, "instagram")
@@ -465,10 +471,10 @@ function EditContact() {
                   </div>
 
                   <div>
-                    <label className="text-gray-400 text-sm">Twitter </label>
+                    <label className="text-gray-600 text-sm">Twitter </label>
                     <input
                       type="text"
-                      className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.twitter || ""}
                       onChange={(e) =>
                         handleChange(e, "twitter")
@@ -476,10 +482,10 @@ function EditContact() {
                     />
                   </div>
                   <div>
-                    <label className="text-gray-400 text-sm">Whats App</label>
+                    <label className="text-gray-600 text-sm">Whats App</label>
                     <input
                       type="text"
-                      className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.whatsApp || ""}
                       onChange={(e) =>
                         handleChange(e, "whatsApp")
@@ -487,10 +493,10 @@ function EditContact() {
                     />
                   </div>
                   <div>
-                    <label className="text-gray-400 text-sm">Linkidin</label>
+                    <label className="text-gray-600 text-sm">Linkidin</label>
                     <input
                       type="text"
-                      className="w-full bg-gray-700 text-white px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.linkedin || ""}
                       onChange={(e) =>
                         handleChange(e, "linkedin")
@@ -505,7 +511,7 @@ function EditContact() {
         {/*  Button */}
         <div className="submit-btn  flex flex-row gap-6 justify-end">
           <button
-            className=" btn btn-primary text-white font-bold py-2 px-4 rounded mt-5"
+            className=" btn btn-primary bg-purple-900 border-purple-900 text-white font-bold py-2 px-4 rounded mt-5 hover:bg-purple-700 hover:border-purple-700"
             onClick={() => {
               handleSave(id);
             }}

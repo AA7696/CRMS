@@ -28,6 +28,7 @@ const createContact = async (req, res) => {
             linkedin
         } = req.body;
 
+
         // Create a new contact
         const newContact = await Contact.create({
             firstName,

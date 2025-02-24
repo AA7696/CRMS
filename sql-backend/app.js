@@ -6,7 +6,7 @@ const cors = require('cors')
 require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
-const sequelize = require('./db/db.js')
+const sequelize = require('./db/db.js');
 
 
 //middlewares
@@ -27,7 +27,6 @@ sequelize.sync()
     app.use('/api/auth', authrouter);
     app.use('/api/users', userRouter);
     app.use('/api/contacts', contactrouter);
-    
 
 const PORT =  3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

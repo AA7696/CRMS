@@ -1,5 +1,6 @@
 const express = require('express')
 const contactrouter = express.Router()
+
 const {createContact,getAllContacts,deleteContact, editContact, getContact,searchContact, sortContact, addActivityToContact, deleteActivity, getContactActivities} = require('../controllers/contactController.js')
 
 contactrouter.post('/create', createContact)
