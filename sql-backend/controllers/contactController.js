@@ -25,7 +25,8 @@ const createContact = async (req, res) => {
             instagram,
             twitter,
             whatsApp,
-            linkedin
+            linkedin,
+            image
         } = req.body;
 
 
@@ -51,7 +52,8 @@ const createContact = async (req, res) => {
             instagram,
             twitter,
             whatsApp,
-            linkedin
+            linkedin,
+            image
         });
 
         res.status(201).json({ message: 'Contact created successfully', contact: newContact });
@@ -158,7 +160,8 @@ const editContact = async (req, res) => {
             instagram,
             twitter,
             whatsApp,
-            linkedin
+            linkedin,
+            image
         } = req.body;
 
         // Update fields directly
@@ -183,6 +186,7 @@ const editContact = async (req, res) => {
         contact.twitter = twitter;
         contact.whatsApp = whatsApp;
         contact.linkedin = linkedin;
+        contact.image = image;
 
         // Save the updated contact to the database
         await contact.save();

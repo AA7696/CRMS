@@ -8,7 +8,7 @@ function EditContact() {
   const { id } = useParams();
   
   const navigate = useNavigate();
-  const[isOpen, setIsOpen]=useState(false);
+ // const[isOpen, setIsOpen]=useState(false);
   const [formData, setFormData] = useState({
       firstName: "",
       middleName: "",
@@ -31,6 +31,7 @@ function EditContact() {
       twitter: "",
       whatsApp: "",
       linkedin: "",
+      image: ""
   });
 
 
@@ -51,12 +52,38 @@ function EditContact() {
     };
   
     // Handle file upload
-    const handleUpload = () => {
+    const handleUpload = async () => {
       if (!file) {
         alert("Please select a file first!");
         return;
       }
+      try {
+        const ImageformData = new FormData();
+        ImageformData.append("file", file);
+        const response = await axios.post("http://localhost:3000/api/contacts/upload", ImageformData,{
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+  
+        });
+    
+        if (response.status === 201) {
+          // Update the file preview
+          console.log('file uploaded');
+          
+          setPreview(null);
+          setFile(null);
+          console.log(response.data.url);
+          
+          return response.data.url
+        }
+      } catch (error) {
+        console.error(error);
+      return null
+        
+      }
     };
+  
 
   
 
@@ -90,6 +117,7 @@ function EditContact() {
           twitter: contactData.twitter,
           whatsApp: contactData.whatsApp,
           linkedin: contactData.linkedin,
+          image: contactData.image || "",
 
         });
       } catch (error) {
@@ -112,8 +140,18 @@ function EditContact() {
 
   const handleSave = async (c_id) => {
     try {
-      const response = await axios.put(`http://localhost:3000/api/contacts/edit/${c_id}`,
-        formData
+      const imageUrl = await handleUpload();
+      if (!imageUrl) {
+        alert('Error uploadinf file');
+        return;
+      }
+
+      const response = await axios.put(`http://localhost:3000/api/contacts/edit/${c_id}`,{
+        ...formData,
+        image: imageUrl
+      }
+        
+
       );
       alert("Contact updated successfully!");
 
@@ -145,29 +183,20 @@ function EditContact() {
 
                 <div className="flex  items-center mb-6">
                   {/* SVG icon area with preview */}
-                  <div className="w-24 h-24 rounded-lg flex justify-center bg-purple-100 items-center border border-dashed border-gray-900 hover:bg-purple-400 mt-4">
-                    {preview ? (
-                      <img
-                        src={preview}
-                        alt="Selected File Preview"
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-gray-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 16l4-4m0 0l4-4m-4 4h12m-6 4v8m0 0h4m-4 0H7"
-                        />
-                      </svg>
-                    )}
+                  <div className="w-24 h-24 rounded-lg flex justify-center items-center border border-dashed border-gray-500 hover:bg-red-500 mt-4">
+                  {preview ? (
+                            <img
+                              src={preview}
+                              alt="Selected File Preview"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          ) : (
+                            <img
+                              src={formData.image}
+                              alt="Selected File Preview"
+                              className="w-full h-full object-cover rounded-lg"
+                            />
+                          )}
                   </div>
 
                   {/* Hidden file input */}

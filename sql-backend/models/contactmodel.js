@@ -121,7 +121,13 @@ const Contact = sequelize.define('Contact', {
     linkedin: {
         type: DataTypes.STRING,
         allowNull: true
-    }
+    },
+    // Image
+    image: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+
 }, {
     tableName: 'contacts', // Explicitly set the table name
     timestamps: true, // Sequelize automatically adds createdAt and updatedAt

@@ -27,6 +27,8 @@ function AddContact() {
     twitter: "",
     whatsApp: "",
     linkedin: "",
+    image: ""
+
   });
 
   const [file, setFile] = useState(null);
@@ -46,24 +48,54 @@ function AddContact() {
   };
 
   // Handle file upload
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (!file) {
       alert("Please select a file first!");
       return;
-}
-};
+    }
+    try {
+      const ImageformData = new FormData();
+      ImageformData.append("file", file);
+      const response = await axios.post("http://localhost:3000/api/contacts/upload", ImageformData,{
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+
+      });
+  
+      if (response.status === 201) {
+        // Update the file preview
+        
+        setPreview(null);
+        setFile(null);
+        
+        return response.data.url
+      }
+    } catch (error) {
+      console.error(error);
+    return null
+      
+    }
+  };
+
 
   const handleChange = (e, field) => {
     const { value } = e.target;
     setFormData({
       ...formData,
-      [field]: value,
+      [field]: value
+
     });
   };
 
   const handleSubmit = async () => {
     // Handle form submission logic here
     try {
+      const imageUrl = await handleUpload();
+      if (!imageUrl) {
+        alert('Error uploadinf file');
+        return;
+      }
       // Send form data to backend
       const response = await axios.post(
         "http://localhost:3000/api/contacts/create",
@@ -89,6 +121,8 @@ function AddContact() {
           twitter: formData.twitter,
           whatsApp: formData.whatsApp,
           linkedin: formData.linkedin,
+          image: imageUrl
+
         }
       );
       if (response.status === 201) {
@@ -116,6 +150,7 @@ function AddContact() {
           twitter: "",
           whatsApp: "",
           linkedin: "",
+          image: ""
         });
         window.location.reload();
       }
@@ -515,18 +550,20 @@ function AddContact() {
                     <form>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="text-gray-600 text-sm">
+                          <label className="text-gray-400 text-sm">
                             Facebook
                           </label>
                           <input
                             type="text"
                             className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                             value={formData.facebook}
-                            onChange={(e) => handleChange(e, "facebook")}
+                            onChange={(e) =>
+                              handleChange(e, "facebook")
+                            }
                           />
                         </div>
                         <div>
-                          <label className="text-gray-600 text-sm">
+                          <label className="text-gray-400 text-sm">
                             Instagram
                           </label>
                           <input
@@ -538,14 +575,16 @@ function AddContact() {
                         </div>
 
                         <div>
-                          <label className="text-gray-600 text-sm">
+                          <label className="text-gray-400 text-sm">
                             Twitter
                           </label>
                           <input
                             type="text"
                             className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                             value={formData.twitter}
-                            onChange={(e) => handleChange(e, "twitter")}
+                            onChange={(e) =>
+                              handleChange(e, "twitter")
+                            }
                           />
                         </div>
                         <div>
