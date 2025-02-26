@@ -1,6 +1,8 @@
 const express = require('express')
 const contactrouter = express.Router()
-const {createContact,getAllContacts,deleteContact, editContact, getContact,searchContact, sortContact, addActivityToContact, deleteActivity, getContactActivities} = require('../controllers/contactController.js')
+const { createContact, getAllContacts, deleteContact, editContact, getContact, searchContact, sortContact, addActivityToContact, deleteActivity, getContactActivities } = require('../controllers/contactController.js')
+const {uploadImage} = require('../controllers/uploadController.js')
+const {upload} = require('../middelwares/multer.js')
 
 contactrouter.post('/create', createContact)
 contactrouter.get('/getall', getAllContacts)
@@ -12,6 +14,8 @@ contactrouter.get('/sort', sortContact)
 contactrouter.post('/:id/activity', addActivityToContact)
 contactrouter.delete('/:id/activity/del/:activityId', deleteActivity)
 contactrouter.get('/:id/activity', getContactActivities)
+
+contactrouter.post('/upload', upload.single("file"),uploadImage);
 
 module.exports = contactrouter
 
