@@ -65,7 +65,7 @@ function Contact() {
                             </button>
                         </label>
                         <div className="dropdown ">
-                            <div tabIndex={0} role="button" className="btn btn-primary  m-1">Sort</div>
+                            <div tabIndex={0} role="button" className="btn btn-primary bg-purple-900 text-white border-purple-900 hover:bg-purple-700 hover:border-purple-700 m-1">Sort</div>
                             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                                 <li><a  onClick={() => {setSortOption('name')}}>Name</a></li>
                                 <li><a  onClick={() => {setSortOption('date')}}>Date</a></li>

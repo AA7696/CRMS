@@ -28,7 +28,6 @@ sequelize.sync()
     app.use('/api/auth', authrouter);
     app.use('/api/users', userRouter);
     app.use('/api/contacts', contactrouter);
-    
 
 const PORT =  3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

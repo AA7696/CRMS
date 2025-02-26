@@ -64,7 +64,7 @@ function Login() {
           <input type="password" placeholder="password" className="input input-bordered" value={formData.password} onChange={(e) =>{setFormData({...formData, password: e.target.value})}} required />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary" onClick={handellogin}>Log In</button>
+          <button className="btn btn-primary text-white bg-purple-900 border-purple-900 hover:bg-purple-700 hover:border-purple-700 " onClick={handellogin}>Log In</button>
         </div>
       </form>
     </div>

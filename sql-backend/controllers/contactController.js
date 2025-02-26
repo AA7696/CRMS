@@ -29,6 +29,7 @@ const createContact = async (req, res) => {
             image
         } = req.body;
 
+
         // Create a new contact
         const newContact = await Contact.create({
             firstName,

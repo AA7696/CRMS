@@ -62,7 +62,7 @@ const handelregister = async (e)=>{
           <input type="password" placeholder="password" className="input input-bordered"  value={formData.password} onChange={(e) => {setFormData({...formData, password: e.target.value})}} required />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary" onClick={handelregister}>Sign In</button>
+          <button className="btn btn-primary bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700" onClick={handelregister}>Sign In</button>
         </div>
       </form>
     </div>

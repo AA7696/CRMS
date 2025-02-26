@@ -56,16 +56,16 @@ useEffect(() => {
   </div>
   <div className="drawer-side w-[20%] h-full   ">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-gray-400 text-base-content h-full w-50 p-4">
+    <ul className="menu bg-purple-900 text-base-content h-full w-50 p-4">
     <div className='text-[#646cff]'>
-      <Link className=" font-bold text-3xl btn btn-ghost btn:hover-none ">
+      <Link className=" text-lime-600 font-bold text-3xl btn btn-ghost btn:hover-none ">
       CRMS
       </Link>
       </div>
-      <li className=' mt-5 text-lg '><Link to= '/homelayout' className=' font-medium text-white'>Dashboard</Link></li>
-      <li className=' mt-5 text-lg'><Link to= '/homelayout/contacts' className=' font-medium text-white'>Contacts</Link></li>
-      <li className=' mt-5 text-lg'><Link to= '/homelayout/leads' className=' font-medium text-white'>Leads</Link></li>
-      <li className=' mt-5 text-lg'><Link to= '/homelayout/users' className=' font-medium text-white'>User</Link></li>
+      <li className=' mt-5 text-lg '><Link to= '/homelayout' className=' font-medium text-white hover:bg-purple-500 hover:text-black'>Dashboard</Link></li>
+      <li className=' mt-5 text-lg'><Link to= '/homelayout/contacts' className='  font-medium text-white hover:bg-purple-500 hover:text-black'>Contacts</Link></li>
+      <li className=' mt-5 text-lg'><Link to= '/homelayout/leads' className=' font-medium text-white hover:bg-purple-500 hover:text-black'>Leads</Link></li>
+      <li className=' mt-5 text-lg'><Link to= '/homelayout/users' className=' font-medium text-white hover:bg-purple-500 hover:text-black'>User</Link></li>
     </ul>
   </div>
 </div>
