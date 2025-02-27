@@ -51,19 +51,15 @@ function Login() {
 
     <div className="card bg-base-100 w-full shadow-2xl">
       <form className="card-body">
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input type="email" placeholder="email" className="input input-bordered" value={formData.email} onChange={(e) => {setFormData({...formData, email: e.target.value})}} required />
+        <div className="form-control m-2">
+
+          <input type="email" placeholder="Email id" className="input input-bordered" value={formData.email} onChange={(e) => {setFormData({...formData, email: e.target.value})}} required />
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input type="password" placeholder="password" className="input input-bordered" value={formData.password} onChange={(e) =>{setFormData({...formData, password: e.target.value})}} required />
+        <div className="form-control m-2">
+      
+          <input type="password" placeholder="Password" className="input input-bordered" value={formData.password} onChange={(e) =>{setFormData({...formData, password: e.target.value})}} required />
         </div>
-        <div className="form-control mt-6">
+        <div className="form-control m2-6">
           <button className="btn btn-primary" onClick={handellogin}>Log In</button>
         </div>
       </form>

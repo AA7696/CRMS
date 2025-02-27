@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { FaTrash, FaEdit, FaEye } from "react-icons/fa";
 
 function ContactList({ contacts, setContacts }) {
   const [loading, setLoading] = useState(false);
@@ -69,34 +70,34 @@ function ContactList({ contacts, setContacts }) {
                         <BsThreeDotsVertical className="text-lg" />
                       </div>
                       {openDropdown === contact.id && (
-                        <ul className="absolute left-0 top-8 menu bg-base-100 rounded-box z-50 w-36 p-2 shadow">
-                          <li className="w-full px-4">
-                            <button
-                              className="bg-transparent w-full hover:border-none"
+                        <ul className="absolute left-0 top-8 menu bg-base-100 rounded-box z-50 w-12 shadow">
+                          <li className="w-full">
+                            <Link
+                              className="bg-transparent p-2 w-full align-center justify-center hover:border-none"
                               onClick={() => {
                                 handleDelete(contact.id);
                                 setOpenDropdown(null);
                               }}
                             >
-                              Delete
-                            </button>
+                              <FaTrash size={15} />
+                            </Link>
                           </li>
-                          <li className="w-full px-4">
+                          <li className="w-full">
                             <Link
-                              className="text-black w-full"
+                              className="text-black w-full align-center justify-center"
                               to={`/homelayout/editContact/${contact.id}`}
                               onClick={() => setOpenDropdown(null)}
                             >
-                              Edit
+                              <FaEdit size={15} />
                             </Link>
                           </li>
-                          <li className="w-full px-4">
+                          <li className="w-full">
                             <Link
-                              className="text-black w-full"
+                              className="text-black w-full align-center justify-center"
                               to={`/homelayout/contacts/${contact.id}`}
                               onClick={() => setOpenDropdown(null)}
                             >
-                              View
+                              <FaEye size={15} />
                             </Link>
                           </li>
                         </ul>
