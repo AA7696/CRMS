@@ -83,12 +83,12 @@ function SingleContact() {
   return (
     <>
       <div className="bg-base-200 h-full w-full p-10 mt-16">
-        <div className="flex items-center p-4 bg-[#1f2937]  rounded-lg shadow-md w-full">
+        <div className="flex items-center p-4 bg-purple-300  rounded-lg shadow-md w-full">
           <div className="w-16 h-16 rounded-full ">
             <div className="avatar">
               <div className="mask mask-squircle h-12 w-12">
                 <img
-                  src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                  src={contact.image}
                   alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
@@ -96,40 +96,40 @@ function SingleContact() {
           </div>
 
           <div className="flex-1 ml-4">
-            <h3 className="text-lg font-bold text-white">
+            <h3 className="text-lg font-bold text-black">
               {contact && contact.firstName} {contact && contact.middleName} {contact && contact.lastName}
             </h3>
-            <p className="text-white"> Role: {contact && contact.role}</p>
+            <p className="text-black"> Role: {contact && contact.role}</p>
 
           </div>
 
         </div>
         <div className="flex flex-col gap-4  mt-4 md:flex-row w-full">
-          <div className="p-4 bg-[#1f2937] rounded-lg shadow-md w-[25%] h-[415px] overflow-y-auto ">
+          <div className="p-4 bg-purple-300 rounded-lg shadow-md w-[25%] h-[415px] overflow-y-auto ">
             <div >
               <h2 className="text-lg font-semibold text-white mb-4">Basic Information</h2>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <span className="material-icons text-white">Email:</span>
-                  <span className="text-white">
+                  <span className="material-icons  text-black">Email:</span>
+                  <span className="text-black">
                     {contact && contact.email}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="material-icons text-white">Phone:</span>
-                  <span className="text-white">
+                  <span className="material-icons text-black">Phone:</span>
+                  <span className="text-black">
                     {contact && contact.phone1}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="material-icons text-white">Address:</span>
-                  <span className="text-white">
+                  <span className="material-icons text-black">Address:</span>
+                  <span className="text-black">
                     {contact && contact.streetAddress}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="material-icons text-white">Updated At:</span>
-                  <span className="text-white">{new Date(contact.updatedAt).toLocaleString().slice(0, 9)}</span>
+                  <span className="material-icons text-black">Updated At:</span>
+                  <span className="text-black">{new Date(contact.updatedAt).toLocaleString().slice(0, 9)}</span>
                 </div>
               </div>
             </div>
@@ -137,25 +137,25 @@ function SingleContact() {
             <hr className="my-4 border-white" />
 
             <div>
-              <h2 className="text-lg font-semibold text-white mb-4">Other Information</h2>
+              <h2 className="text-lg font-semibold text-black  mb-4">Other Information</h2>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-white">Company:</span>
-                  <span className="text-white">{contact && contact.companyName}</span>
+                  <span className="text-black">Company:</span>
+                  <span className="text-black">{contact && contact.companyName}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white">Company Website:</span>
-                  <span className="text-white">{contact && contact.companyWebsite}</span>
+                  <span className="text-black">Company Website:</span>
+                  <span className="text-black">{contact && contact.companyWebsite}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white">Industry:</span>
-                  <span className="text-white">{contact && contact.industry}</span>
+                  <span className="text-black">Industry:</span>
+                  <span className="text-black">{contact && contact.industry}</span>
                 </div>
 
               </div>
             </div>
           </div>
-          <div className="p-4 bg-[#1f2937] rounded-lg shadow-md w-[75%] h-[415px] flex flex-col gap-5 overflow-y-auto">
+          <div className="p-4 bg-purple-300 rounded-lg shadow-md w-[75%] h-[415px] flex flex-col gap-5 overflow-y-auto">
             {/* Activity Form  */}
             <div className="join w-full ">
               <div className=' flex-1'>
@@ -176,22 +176,22 @@ function SingleContact() {
                 <option>Status</option>
               </select>
               <div className="indicator">
-                <button className="btn join-item btn-primary" onClick={addActivity}>Add</button>
+                <button className="btn join-item btn-primary text-white bg-purple-900 border-purple-900 hover:bg-purple-700 hover:border-purple-700" onClick={addActivity}>Add</button>
               </div>
             </div>
 
             {/* Activities */}
             {activityData && activityData.map((activity,index) =>{
               return(
-                <div key={index} className="flex flex-col bg-[#6b71ebf9] w-full rounded-lg p-4 ">
+                <div key={index} className="flex flex-col bg-white text-black w-full rounded-lg p-4 ">
                   <div className=' flex w-full justify-between items-center'>
                   <h1 className=' text-xl'>{activity.activityType} </h1>
                   <div className=' flex gap-4 items-center'>
                   <p>{new Date(activity.date).toLocaleString().slice(0, 9)}</p>
-                  <button className=' bg-transparent'
+                  <button className=' bg-transparent hover:bg-purple-900'
                   onClick={() => deleteActivity(id,activity.id)}
                   >
-                  <MdDelete className=' text-2xl' />
+                  <MdDelete className=' text-2xl ' />
                   </button>
                   </div>
                   </div>

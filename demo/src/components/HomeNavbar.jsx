@@ -63,15 +63,15 @@ function HomeNavbar({isSidebarOpen, setIsSidebarOpen}) {
 
   return (
     <>
-        <div className={`navbar   bg-gray-400 ${isSidebarOpen? 'w-[89%]': 'w-full'}  h-[10%] fixed top-0 p-5 z-50`}>
+        <div className={`navbar   bg-purple-900 ${isSidebarOpen? 'w-[89%]': 'w-full'}  h-[10%] fixed top-0 p-5 z-50`}>
   <div className={`flex-1 ${isSidebarOpen? 'ml-14': 'ml-3'} flex-row gap-6`}>
   <button onClick={toggleSidebar} className="btn btn-ghost">
             <FiAlignJustify /> {/* Icon for the toggle button */}
           </button>
-    <h3 className=' text-lg font-medium'>Welcome {user.username} ! </h3>
+    <h3 className=' text-lg font-medium text-purple-50'>Welcome {user.username} ! </h3>
   </div>
   <div className="flex-none">
-    <button className=' btn btn-primary' onClick={handleLogout}>Log Out</button>
+    <button className=' btn btn-primary text-black border-purple-900 bg-purple-400 hover:bg-purple-200' onClick={handleLogout}>Log Out</button>
   </div>
 </div>
 
