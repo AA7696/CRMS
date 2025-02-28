@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Signin() {
+function Signup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -79,28 +79,19 @@ function Signin() {
                 />
               </div>
               <div className="form-control m-2">
-                <button className="btn btn-primary" onClick={handelregister}>
-                  Sign In
+                <button
+                  className="btn btn-primary bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
+                  onClick={handelregister}
+                >
+                  Sign Up
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Password</span>
-          </label>
-          <input type="password" placeholder="password" className="input input-bordered"  value={formData.password} onChange={(e) => {setFormData({...formData, password: e.target.value})}} required />
-        </div>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700" onClick={handelregister}>Sign In</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+      </div>
     </>
   );
 }
 
-export default Signin;
+export default Signup;

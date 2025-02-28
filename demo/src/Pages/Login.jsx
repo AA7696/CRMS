@@ -74,9 +74,9 @@ function Login() {
                   required
                 />
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control m2-6">
                 <button
-                  className="btn btn-primary text-white bg-purple-900 border-purple-900 hover:bg-purple-700 hover:border-purple-700 "
+                  className="btn btn-primary bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
                   onClick={handellogin}
                 >
                   Log In

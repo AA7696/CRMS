@@ -6,86 +6,84 @@ import { useNavigate } from "react-router-dom";
 
 function EditContact() {
   const { id } = useParams();
-  
+
   const navigate = useNavigate();
- // const[isOpen, setIsOpen]=useState(false);
+  // const[isOpen, setIsOpen]=useState(false);
   const [formData, setFormData] = useState({
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      companyName: "",
-      companyWebsite: "",
-      phone1: "",
-      phone2: "",
-      location: "",
-      role: "",
-      industry: "",
-      streetAddress: "",
-      country: "",
-      stateProvince: "",
-      city: "",
-      zipcode: "",
-      facebook: "",
-      instagram: "",
-      twitter: "",
-      whatsApp: "",
-      linkedin: "",
-      image: ""
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    companyName: "",
+    companyWebsite: "",
+    phone1: "",
+    phone2: "",
+    location: "",
+    role: "",
+    industry: "",
+    streetAddress: "",
+    country: "",
+    stateProvince: "",
+    city: "",
+    zipcode: "",
+    facebook: "",
+    instagram: "",
+    twitter: "",
+    whatsApp: "",
+    linkedin: "",
+    image: "",
   });
 
-
   const [file, setFile] = useState(null);
-    const [preview, setPreview] = useState(null);
-  
-    // Handle file selection
-    const handleFileChange = (e) => {
-      const selectedFile = e.target.files[0];
-      if (selectedFile) {
-        setFile(selectedFile);
-        setPreview(URL.createObjectURL(selectedFile)); // Create a preview URL
-      }
-    };
-  
-    const handleButtonClick = () => {
-      document.getElementById("file-upload").click(); // Open file selection dialog
-    };
-  
-    // Handle file upload
-    const handleUpload = async () => {
-      if (!file) {
-        alert("Please select a file first!");
-        return;
-      }
-      try {
-        const ImageformData = new FormData();
-        ImageformData.append("file", file);
-        const response = await axios.post("http://localhost:3000/api/contacts/upload", ImageformData,{
+  const [preview, setPreview] = useState(null);
+
+  // Handle file selection
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setPreview(URL.createObjectURL(selectedFile)); // Create a preview URL
+    }
+  };
+
+  const handleButtonClick = () => {
+    document.getElementById("file-upload").click(); // Open file selection dialog
+  };
+
+  // Handle file upload
+  const handleUpload = async () => {
+    if (!file) {
+      alert("Please select a file first!");
+      return;
+    }
+    try {
+      const ImageformData = new FormData();
+      ImageformData.append("file", file);
+      const response = await axios.post(
+        "http://localhost:3000/api/contacts/upload",
+        ImageformData,
+        {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-  
-        });
-    
-        if (response.status === 201) {
-          // Update the file preview
-          console.log('file uploaded');
-          
-          setPreview(null);
-          setFile(null);
-          console.log(response.data.url);
-          
-          return response.data.url
         }
-      } catch (error) {
-        console.error(error);
-      return null
-        
-      }
-    };
-  
+      );
 
-  
+      if (response.status === 201) {
+        // Update the file preview
+        console.log("file uploaded");
+
+        setPreview(null);
+        setFile(null);
+        console.log(response.data.url);
+
+        return response.data.url;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     const getContactData = async () => {
@@ -118,7 +116,6 @@ function EditContact() {
           whatsApp: contactData.whatsApp,
           linkedin: contactData.linkedin,
           image: contactData.image || "",
-
         });
       } catch (error) {
         console.error(error);
@@ -131,27 +128,25 @@ function EditContact() {
     const { value } = e.target;
     setFormData({
       ...formData,
-      [field]: value
-     
+      [field]: value,
     });
   };
   // image set
-  
 
   const handleSave = async (c_id) => {
     try {
       const imageUrl = await handleUpload();
       if (!imageUrl) {
-        alert('Error uploadinf file');
+        alert("Error uploadinf file");
         return;
       }
 
-      const response = await axios.put(`http://localhost:3000/api/contacts/edit/${c_id}`,{
-        ...formData,
-        image: imageUrl
-      }
-        
-
+      const response = await axios.put(
+        `http://localhost:3000/api/contacts/edit/${c_id}`,
+        {
+          ...formData,
+          image: imageUrl,
+        }
       );
       alert("Contact updated successfully!");
 
@@ -164,18 +159,14 @@ function EditContact() {
 
   return (
     <>
-      <div>
-        
-      </div>
+      <div className="m-2"></div>
       <div className=" bg-purple-200 join join-vertical w-screen md:w-[700px] p-6 ">
-         
-             
-    
-
         {/* Basic Info */}
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title mt-[30px] text-xl text-black font-medium">Basic Info</div>
+          <div className="collapse-title mt-[30px] text-xl text-black font-medium">
+            Basic Info
+          </div>
           <div className="collapse-content ">
             <div className=" flex justify-center items-center ">
               <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
@@ -184,19 +175,19 @@ function EditContact() {
                 <div className="flex  items-center mb-6">
                   {/* SVG icon area with preview */}
                   <div className="w-24 h-24 rounded-lg flex justify-center items-center border border-dashed border-gray-500 hover:bg-red-500 mt-4">
-                  {preview ? (
-                            <img
-                              src={preview}
-                              alt="Selected File Preview"
-                              className="w-full h-full object-cover rounded-lg"
-                            />
-                          ) : (
-                            <img
-                              src={formData.image}
-                              alt="Selected File Preview"
-                              className="w-full h-full object-cover rounded-lg"
-                            />
-                          )}
+                    {preview ? (
+                      <img
+                        src={preview}
+                        alt="Selected File Preview"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    ) : (
+                      <img
+                        src={formData.image}
+                        alt="Selected File Preview"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    )}
                   </div>
 
                   {/* Hidden file input */}
@@ -224,72 +215,58 @@ function EditContact() {
                     </p>
                   )}
                 </div>
-                <p className="text-gray-500 text-sm mb-6">JPG, GIF, or PNG. Max size of 800K</p> 
+                <p className="text-gray-500 text-sm mb-6">
+                  JPG, GIF, or PNG. Max size of 800K
+                </p>
                 {/* Form Fields */}
                 <form>
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        First Name *
-                      </label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.firstName || ""}
-                        onChange={(e) =>
-                          handleChange(e, "firstName")
-                        }
+                        onChange={(e) => handleChange(e, "firstName")}
+                        placeholder="First name"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        Middle Name *
-                      </label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.middleName || ""}
-                        onChange={(e) =>
-                          handleChange(e,  "middleName")
-                        }
+                        onChange={(e) => handleChange(e, "middleName")}
+                        placeholder="Middle name"
                       />
                     </div>
 
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        Last Name *
-                      </label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.lastName || ""}
-                        onChange={(e) =>
-                          handleChange(e, "lastName")
-                        }
+                        onChange={(e) => handleChange(e, "lastName")}
+                        placeholder="Last name"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">Email *</label>
+                    <div className="m-2">
                       <input
                         type="email"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.email || ""}
-                        onChange={(e) => handleChange(e,  "email")}
+                        onChange={(e) => handleChange(e, "email")}
+                        placeholder="Email id"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        Company Name
-                      </label>
+                    <div className="m-2">
                       <select
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.companyName || ""}
-                        onChange={(e) =>
-                          handleChange(e, "companyName")
-                        }
+                        placeholder="Company name"
+                        onChange={(e) => handleChange(e, "companyName")}
                       >
                         <option className="bg-gray-100" value="">
-                          Choose
+                        Company name
                         </option>
                         <option className="bg-gray-100" value="company1">
                           Company 1
@@ -299,69 +276,59 @@ function EditContact() {
                         </option>
                       </select>
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        Company Website
-                      </label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.companyWebsite || ""}
-                        onChange={(e) =>
-                          handleChange(e, "companyWebsite")
-                        }
+                        onChange={(e) => handleChange(e, "companyWebsite")}
+                        placeholder="Company website"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">Phone 1 *</label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         required
                         value={formData.phone1 || ""}
-                        onChange={(e) => handleChange(e,  "phone1")}
+                        onChange={(e) => handleChange(e, "phone1")}
+                        placeholder="Phone number1"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">Phone 2</label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.phone2 || ""}
                         onChange={(e) => handleChange(e, "phone2")}
+                        placeholder="Phone number2"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">Location</label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.location || ""}
-                        onChange={(e) =>
-                          handleChange(e, "location")
-                        }
+                        onChange={(e) => handleChange(e, "location")}
+                        placeholder="Location"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">Role</label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.role || ""}
                         onChange={(e) => handleChange(e, "role")}
+                        placeholder="Role"
                       />
                     </div>
-                    <div>
-                      <label className="text-gray-600 text-sm">
-                        Industry Domain
-                      </label>
+                    <div className="m-2">
                       <input
                         type="text"
-                        className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                         value={formData.industry || ""}
-                        onChange={(e) =>
-                          handleChange(e, "industry")
-                        }
+                        onChange={(e) => handleChange(e, "industry")}
+                        placeholder="Industry domain"
                       />
                     </div>
                   </div>
@@ -373,33 +340,33 @@ function EditContact() {
         {/* Address Info */}
         <div className="collapse collapse-arrow join-item border-base-300 border">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-xl  text-black font-medium">Address Info</div>
+          <div className="collapse-title text-xl  text-black font-medium">
+            Address Info
+          </div>
           <div className="collapse-content">
             <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
               {/* Street Address */}
               <div className="mb-4">
-                <label className="text-gray-600 text-sm">Street Address</label>
                 <input
                   type="text"
-                  className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                  className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                   value={formData.streetAddress || ""}
-                  onChange={(e) =>
-                    handleChange(e,  "streetAddress")
-                  }
+                  onChange={(e) => handleChange(e, "streetAddress")}
+                  placeholder="Street address"
                 />
               </div>
 
               {/* Country and State/Province */}
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="text-gray-600 text-sm">Country</label>
+                <div className="m-2">
                   <select
-                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.country || ""}
                     onChange={(e) => handleChange(e, "country")}
+                    placeholder="Country"
                   >
                     <option className="bg-gray-100" value="">
-                      Choose
+                    Country
                     </option>
                     <option className="bg-gray-100" value="USA">
                       USA
@@ -409,19 +376,15 @@ function EditContact() {
                     </option>
                   </select>
                 </div>
-                <div>
-                  <label className="text-gray-600 text-sm">
-                    State / Province
-                  </label>
+                <div className="m-2">
                   <select
-                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.stateProvince || ""}
-                    onChange={(e) =>
-                      handleChange(e, "stateProvince")
-                    }
+                    onChange={(e) => handleChange(e, "stateProvince")}
+                    placeholder="State / province"
                   >
                     <option className="bg-gray-100" value="">
-                      Choose
+                    State / province
                     </option>
                     <option className="bg-gray-100" value="California">
                       California
@@ -435,15 +398,15 @@ function EditContact() {
 
               {/* City and Zipcode */}
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-gray-600 text-sm">City</label>
+                <div className="m-2">
                   <select
-                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.city || ""}
                     onChange={(e) => handleChange(e, "city")}
+                    placeholder="City"
                   >
                     <option className="bg-gray-100" value="">
-                      Choose
+                    City
                     </option>
                     <option className="bg-gray-100" value="Los Angeles">
                       Los Angeles
@@ -453,13 +416,13 @@ function EditContact() {
                     </option>
                   </select>
                 </div>
-                <div>
-                  <label className="text-gray-600 text-sm">Zipcode</label>
+                <div className="m-2">
                   <input
                     type="text"
-                    className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     value={formData.zipcode || ""}
                     onChange={(e) => handleChange(e, "zipcode")}
+                    placeholder="Zip code"
                   />
                 </div>
               </div>
@@ -476,60 +439,50 @@ function EditContact() {
             <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
               <form>
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-gray-600 text-sm">Facebook </label>
+                  <div className="m-2">
                     <input
                       type="text"
-                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.facebook || ""}
-                      onChange={(e) =>
-                        handleChange(e, "facebook")
-                      }
+                      onChange={(e) => handleChange(e, "facebook")}
+                      placeholder="Facebook"
                     />
                   </div>
-                  <div>
-                    <label className="text-gray-600 text-sm">Instagram </label>
+                  <div className="m-2">
                     <input
                       type="text"
-                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.instagram || ""}
-                      onChange={(e) =>
-                        handleChange(e, "instagram")
-                      }
+                      onChange={(e) => handleChange(e, "instagram")}
+                      placeholder="Instagram"
                     />
                   </div>
 
-                  <div>
-                    <label className="text-gray-600 text-sm">Twitter </label>
+                  <div className="m-2">
                     <input
                       type="text"
-                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.twitter || ""}
-                      onChange={(e) =>
-                        handleChange(e, "twitter")
-                      }
+                      onChange={(e) => handleChange(e, "twitter")}
+                      placeholder="Twitter"
                     />
                   </div>
-                  <div>
-                    <label className="text-gray-600 text-sm">Whats App</label>
+                  <div className="m-2">
                     <input
                       type="text"
-                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.whatsApp || ""}
-                      onChange={(e) =>
-                        handleChange(e, "whatsApp")
-                      }
+                      onChange={(e) => handleChange(e, "whatsApp")}
+                      placeholder="WhatsApp"
                     />
                   </div>
-                  <div>
-                    <label className="text-gray-600 text-sm">Linkidin</label>
+                  <div className="m-2">
                     <input
                       type="text"
-                      className="w-full bg-gray-50 text-black px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                       value={formData.linkedin || ""}
-                      onChange={(e) =>
-                        handleChange(e, "linkedin")
-                      }
+                      onChange={(e) => handleChange(e, "linkedin")}
+                      placeholder="Linkedin"
                     />
                   </div>
                 </div>
