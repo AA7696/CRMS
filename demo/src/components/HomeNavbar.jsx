@@ -74,9 +74,9 @@ function HomeNavbar({ isSidebarOpen, setIsSidebarOpen }) {
             isSidebarOpen ? "ml-11" : "ml-3"
           } flex-row gap-6`}
         >
-          <button onClick={toggleSidebar} className="btn btn-ghost">
-            <FiAlignJustify /> {/* Icon for the toggle button */}
-          </button>
+          <Link onClick={toggleSidebar} className="logo">
+            <FiAlignJustify /> {/* Icon for the toggle link */}
+          </Link>
           <h3 className=" text-lg font-medium text-purple-50">
             Welcome {user.username} !{" "}
           </h3>
