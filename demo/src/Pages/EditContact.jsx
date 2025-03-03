@@ -142,7 +142,7 @@ function EditContact() {
     try {
       const imageUrl = await handleUpload();
       if (!imageUrl) {
-        alert('Error uploadinf file');
+        alert('Error uploading file');
         return;
       }
 

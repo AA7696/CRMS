@@ -51,7 +51,7 @@ function AddContact() {
   const handleUpload = async () => {
     if (!file) {
       alert("Please select a file first!");
-      return;
+      return null;
     }
     try {
       const ImageformData = new FormData();
@@ -89,11 +89,12 @@ function AddContact() {
   };
 
   const handleSubmit = async () => {
+ 
     // Handle form submission logic here
     try {
       const imageUrl = await handleUpload();
       if (!imageUrl) {
-        alert('Error uploadinf file');
+        alert('Error uploading file');
         return;
       }
       // Send form data to backend
@@ -444,9 +445,9 @@ function AddContact() {
                 </div>
               </div>
               {/* Address Info */}
-              <div className="collapse collapse-arrow join-item border-base-300 border">
+              <div  className="collapse collapse-arrow join-item border-base-300 border">
                 <input type="radio" name="my-accordion-4" />
-                <div className="collapse-title text-balck text-xl font-medium">
+                <div  className="collapse-title dark:text-black text-balck text-xl font-medium">
                   Address Info
                 </div>
                 <div className="collapse-content">
@@ -550,7 +551,7 @@ function AddContact() {
                     <form>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="text-gray-400 text-sm">
+                          <label className=" text-gray-600 text-sm">
                             Facebook
                           </label>
                           <input
@@ -563,7 +564,7 @@ function AddContact() {
                           />
                         </div>
                         <div>
-                          <label className="text-gray-400 text-sm">
+                          <label className="text-gray-600 text-sm">
                             Instagram
                           </label>
                           <input
@@ -575,7 +576,7 @@ function AddContact() {
                         </div>
 
                         <div>
-                          <label className="text-gray-400 text-sm">
+                          <label className="text-gray-600 text-sm">
                             Twitter
                           </label>
                           <input
