@@ -46,10 +46,10 @@ function ContactList({ contacts, setContacts }) {
 
     return (
         <>
-            <div className="bg-base-100 p-4 shadow-md flex flex-row justify-between h-[350px] w-full">
+            <div className="bg-base-100 p-4 shadow-md flex flex-row justify-between h-[350px] w-full  ">
                 <div className="flex flex-col gap-2 w-full">
                     <div className="overflow-x-auto w-full">
-                        <table className="table">
+                        <table className="table ">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -71,7 +71,7 @@ function ContactList({ contacts, setContacts }) {
                                                 <div tabIndex={0} role="button" className="btn">
                                                     <BsThreeDotsVertical className="text-lg" />
                                                 </div>
-                                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow">
                                                     <li className="w-full px-4">
                                                         <button className="bg-transparent w-full hover:border-none" onClick={() => openDeleteModal(contact)}>
                                                             Delete
