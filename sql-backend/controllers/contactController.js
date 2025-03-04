@@ -124,6 +124,7 @@ const getContact = async (req, res) => {
         res.status(500).json({ message: 'Error fetching contact', error: error.message });
     }
 };
+
 // Edit a contact
 
 const editContact = async (req, res) => {
