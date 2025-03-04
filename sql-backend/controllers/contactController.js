@@ -93,7 +93,7 @@ const deleteContact = async (req, res) => {
         }
 
         // Delete the contact
-        await contact.destroy();
+       await contact.destroy();
 
         // Return success response
         res.status(200).json({ message: 'Contact deleted successfully' });
