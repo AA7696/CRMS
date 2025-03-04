@@ -6,32 +6,32 @@ import { useNavigate } from "react-router-dom";
 
 function EditContact() {
   const { id } = useParams();
-  
+
   const navigate = useNavigate();
- // const[isOpen, setIsOpen]=useState(false);
+  // const[isOpen, setIsOpen]=useState(false);
   const [formData, setFormData] = useState({
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      companyName: "",
-      companyWebsite: "",
-      phone1: "",
-      phone2: "",
-      location: "",
-      role: "",
-      industry: "",
-      streetAddress: "",
-      country: "",
-      stateProvince: "",
-      city: "",
-      zipcode: "",
-      facebook: "",
-      instagram: "",
-      twitter: "",
-      whatsApp: "",
-      linkedin: "",
-      image: ""
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    companyName: "",
+    companyWebsite: "",
+    phone1: "",
+    phone2: "",
+    location: "",
+    role: "",
+    industry: "",
+    streetAddress: "",
+    country: "",
+    stateProvince: "",
+    city: "",
+    zipcode: "",
+    facebook: "",
+    instagram: "",
+    twitter: "",
+    whatsApp: "",
+    linkedin: "",
+    image: "",
   });
 
   const [file, setFile] = useState(null);
