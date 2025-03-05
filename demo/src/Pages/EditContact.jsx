@@ -201,7 +201,7 @@ function EditContact() {
                   {/* Button triggers file selection or upload */}
                   <button
                     onClick={handleButtonClick}
-                    className=" ml-4 btn-primary bg-lime-700 border-lime-700 text-white px-4 py-2 rounded-lg hover:bg-lime-600 hover:border-lime-600"
+                    className=" ml-4 drawer-button btn bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
                   >
                     {!file ? "Select File" : "Upload File"}{" "}
                     {/* Change button text based on file selection */}
