@@ -168,7 +168,7 @@ function AddContact() {
         <label
           htmlFor="my-drawer-4"
           onClick={() => setIsOpen(true)}
-          className="drawer-button btn btn-primary bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
+          className="drawer-button btn bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
         >
           Add Contact
         </label>
@@ -180,7 +180,7 @@ function AddContact() {
             className="drawer-overlay"
             onClick={() => setIsOpen(false)}
           ></label>
-          <div className=" menu bg-purple-200 min-h-full w-auto p-4 ">
+          <div className=" menu min-h-full w-auto p-4 bg-purple-200">
             <div className="join join-vertical w-screen lg:w-[700px] p-6">
               {/* 🔵 Open Sidebar Button */}
 
@@ -232,7 +232,7 @@ function AddContact() {
                           ) : (
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className="h-8 w-8 "
+                              className="h-8 w-8 text-white"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -258,7 +258,7 @@ function AddContact() {
                         {/* Button triggers file selection or upload */}
                         <button
                           onClick={handleButtonClick}
-                          className=" ml-4 btn-primary bg-lime-700 border-lime-700  text-white px-4 py-2 rounded-lg hover:bg-lime-600 hover:boder-lime-600"
+                          className=" ml-4 drawer-button btn bg-purple-900 border-purple-900 text-white hover:bg-purple-700 hover:border-purple-700"
                         >
                           {!file ? "Select File" : "Upload File"}{" "}
                           {/* Change button text based on file selection */}
@@ -275,7 +275,7 @@ function AddContact() {
                         )}
                       </div>
 
-                      <p className="text-gray-500 text-sm mb-6">
+                      <p className="text-black text-sm mb-6">
                         JPG, GIF, or PNG. Max size of 800K
                       </p>
 
@@ -327,7 +327,7 @@ function AddContact() {
                               onChange={(e) => handleChange(e, "companyName")}
                             >
                               <option className="bg-white" value="">
-                                Company name
+                                Choose
                               </option>
                               <option className="bg-white" value="company1">
                                 Company 1
@@ -400,7 +400,7 @@ function AddContact() {
                   </div>
                 </div>
               </div>
-              {/* Address Info 
+              {/* Address Info */}
               <div className="collapse collapse-arrow join-item border-base-300 border">
                 <input type="radio" name="my-accordion-4" />
                 <div className="collapse-title text-balck text-xl font-medium">
@@ -409,166 +409,169 @@ function AddContact() {
                 <div className="collapse-content">
                   <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
                     {/* Street Address */}
-              <div className="mb-4">
-                <input
-                  type="text"
-                  className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                  value={formData.streetAddress}
-                  placeholder="Street address"
-                  onChange={(e) => handleChange(e, "streetAddress")}
-                />
-              </div>
+                    <div className="m-2">
+                      <input
+                        type="text"
+                        className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                        value={formData.streetAddress}
+                        placeholder="Street address"
+                        onChange={(e) => handleChange(e, "streetAddress")}
+                      />
+                    </div>
 
-              {/* Country and State/Province */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="m-2">
-                  <select
-                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.country}
-                    placeholder="Country"
-                    onChange={(e) => handleChange(e, "country")}
-                  >
-                    <option className="bg-gray-800" value="">
-                      Country
-                    </option>
-                    <option className="bg-gray-800" value="USA">
-                      USA
-                    </option>
-                    <option className="bg-gray-800" value="Canada">
-                      Canada
-                    </option>
-                  </select>
-                </div>
-                <div className="m-2">
-                  <select
-                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.stateProvince}
-                    placeholder="State / province"
-                    onChange={(e) => handleChange(e, "stateProvince")}
-                  >
-                    <option className="bg-gray-800" value="">
-                      State
-                    </option>
-                    <option className="bg-gray-800" value="California">
-                      California
-                    </option>
-                    <option className="bg-gray-800" value="Ontario">
-                      Ontario
-                    </option>
-                  </select>
+                    {/* Country and State/Province */}
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <div className="m-2">
+                        <select
+                          className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                          value={formData.country}
+                          placeholder="Country"
+                          onChange={(e) => handleChange(e, "country")}
+                        >
+                          <option className="bg-gray-100" value="">
+                            Choose
+                          </option>
+                          <option className="bg-gray-100" value="USA">
+                            USA
+                          </option>
+                          <option className="bg-gray-100" value="Canada">
+                            Canada
+                          </option>
+                        </select>
+                      </div>
+                      <div className="m-2">
+                        <select
+                          className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                          value={formData.stateProvince}
+                          placeholder="State / province"
+                          onChange={(e) => handleChange(e, "stateProvince")}
+                        >
+                          <option className="bg-gray-100" value="">
+                            Choose
+                          </option>
+                          <option className="bg-gray-100" value="California">
+                            California
+                          </option>
+                          <option className="bg-gray-100" value="Ontario">
+                            Ontario
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* City and Zipcode */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="m-2">
+                        <select
+                          className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                          value={formData.city}
+                          placeholder="City"
+                          onChange={(e) => handleChange(e, "city")}
+                        >
+                          <option className="bg-white" value="">
+                            Choose
+                          </option>
+                          <option className="bg-white" value="Los Angeles">
+                            Los Angeles
+                          </option>
+                          <option className="bg-white" value="Toronto">
+                            Toronto
+                          </option>
+                        </select>
+                      </div>
+                      <div className="m-2">
+                        <input
+                          type="text"
+                          className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                          value={formData.zipcode}
+                          placeholder="Zip code"
+                          onChange={(e) => handleChange(e, "zipcode")}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              {/* Social Media Link */}
+              <div className="collapse collapse-arrow join-item border-base-300 border">
+                <input type="radio" name="my-accordion-4" />
+                <div className="collapse-title text-black text-xl font-medium">
+                  Social Media Link
+                </div>
+                <div className="collapse-content">
+                  <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
+                    <form>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="m-2">
+                          <input
+                            type="text"
+                            className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            value={formData.facebook}
+                            placeholder="Facebook"
+                            onChange={(e) => handleChange(e, "facebook")}
+                          />
+                        </div>
+                        <div className="m-2">
+                          <input
+                            type="text"
+                            className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            value={formData.instagram}
+                            placeholder="Instagram"
+                            onChange={(e) => handleChange(e, "instagram")}
+                          />
+                        </div>
 
-              {/* City and Zipcode */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="m-2">
-                  <select
-                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.city}
-                    placeholder="City"
-                    onChange={(e) => handleChange(e, "city")}
-                  >
-                    <option className="bg-white" value="">
-                      City
-                    </option>
-                    <option className="bg-white" value="Los Angeles">
-                      Los Angeles
-                    </option>
-                    <option className="bg-white" value="Toronto">
-                      Toronto
-                    </option>
-                  </select>
+                        <div className="m-2">
+                          <input
+                            type="text"
+                            className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            value={formData.twitter}
+                            placeholder="Twitter"
+                            onChange={(e) => handleChange(e, "twitter")}
+                          />
+                        </div>
+                        <div className="m-2">
+                          <input
+                            type="text"
+                            className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            value={formData.whatsApp}
+                            placeholder="WhatsApp"
+                            onChange={(e) => handleChange(e, "whatsApp")}
+                          />
+                        </div>
+                        <div className="m-2">
+                          <input
+                            type="text"
+                            className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                            value={formData.linkedin}
+                            placeholder="CoLinkedinuntry"
+                            onChange={(e) => handleChange(e, "linkedin")}
+                          />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div className="m-2">
-                  <input
-                    type="text"
-                    className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                    value={formData.zipcode}
-                    placeholder="Zip code"
-                    onChange={(e) => handleChange(e, "zipcode")}
-                  />
-                </div>
+              </div>
+              {/*  Button */}
+              <div className="submit-btn  flex flex-row gap-6 justify-end">
+                <label
+                  htmlFor="my-drawer-4"
+                  aria-label="close sidebar"
+                  className="btn btn-error bg-red-700 border-red-700 hover:bg-red-600 hover:border-red-600 text-white font-bold py-2 px-4 rounded mt-5"
+                >
+                  Cancel
+                </label>
+                <button
+                  className=" btn btn-primary bg-lime-700 border-lime-700  hover:bg-lime-600 hover:border-lime-600 text-white font-bold py-2 px-4 rounded mt-5"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>
         </div>
-        {/* Social Media Link */}
-        {/* <div className="collapse collapse-arrow join-item border-base-300 border">
-          <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-black text-xl font-medium">
-            Social Media Link
-          </div>
-          <div className="collapse-content">
-            <div className=" p-8 rounded-lg shadow-lg w-full max-w-2xl">
-              <form>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="m-2">
-                    <input
-                      type="text"
-                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.facebook}
-                      placeholder="Facebook"
-                      onChange={(e) => handleChange(e, "facebook")}
-                    />
-                  </div>
-                  <div className="m-2">
-                    <input
-                      type="text"
-                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.instagram}
-                      placeholder="Instagram"
-                      onChange={(e) => handleChange(e, "instagram")}
-                    />
-                  </div>
-
-                  <div className="m-2">
-                    <input
-                      type="text"
-                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.twitter}
-                      placeholder="Twitter"
-                      onChange={(e) => handleChange(e, "twitter")}
-                    />
-                  </div>
-                  <div className="m-2">
-                    <input
-                      type="text"
-                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.whatsApp}
-                      placeholder="WhatsApp"
-                      onChange={(e) => handleChange(e, "whatsApp")}
-                    />
-                  </div>
-                  <div className="m-2">
-                    <input
-                      type="text"
-                      className="w-full bg-white text-gray px-4 py-2 rounded-lg mt-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                      value={formData.linkedin}
-                      placeholder="CoLinkedinuntry"
-                      onChange={(e) => handleChange(e, "linkedin")}
-                    />
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        
-        <div className="submit-btn  flex flex-row gap-6 justify-end">
-          <label
-            htmlFor="my-drawer-4"
-            aria-label="close sidebar"
-            className="btn btn-error bg-red-700 border-red-700 hover:bg-red-600 hover:border-red-600 text-white font-bold py-2 px-4 rounded mt-5"
-          >
-            Cancel
-          </label>
-          <button
-            className=" btn btn-primary bg-lime-700 border-lime-700  hover:bg-lime-600 hover:border-lime-600 text-white font-bold py-2 px-4 rounded mt-5"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </div> */}
       </div>
     </>
   );

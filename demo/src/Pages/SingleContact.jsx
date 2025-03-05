@@ -107,7 +107,7 @@ function SingleContact() {
         <div className="flex flex-col gap-4  mt-4 md:flex-row w-full">
           <div className="p-4 bg-purple-300 rounded-lg shadow-md w-[25%] h-[415px] overflow-y-auto ">
             <div >
-              <h2 className="text-lg font-semibold text-white mb-4">Basic Information</h2>
+              <h2 className="text-lg font-semibold text-black mb-4">Basic Information</h2>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <span className="material-icons  text-black">Email:</span>
@@ -176,7 +176,7 @@ function SingleContact() {
                 <option>Status</option>
               </select>
               <div className="indicator">
-                <button className="btn join-item btn-primary text-white bg-purple-900 border-purple-900 hover:bg-purple-700 hover:border-purple-700" onClick={addActivity}>Add</button>
+                <button className="btn join-item text-white bg-purple-900 border-purple-900 hover:bg-purple-700 hover:border-purple-700" onClick={addActivity}>Add</button>
               </div>
             </div>
 
